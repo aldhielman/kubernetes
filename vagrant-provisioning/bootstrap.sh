@@ -43,7 +43,7 @@ apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main" >/dev/
 apt update -qq >/dev/null 2>&1
 
 echo "[TASK 7] Install Kubernetes components (kubeadm, kubelet and kubectl)"
-apt install -qq -y kubeadm=1.22.0-00 kubelet=1.22.0-00 kubectl=1.22.0-00 >/dev/null 2>&1
+apt install -qq -y kubeadm kubelet kubectl >/dev/null 2>&1
 
 echo "[TASK 8] Enable ssh password authentication"
 sed -i 's/^PasswordAuthentication .*/PasswordAuthentication yes/' /etc/ssh/sshd_config
@@ -56,7 +56,7 @@ echo "export TERM=xterm" >> /etc/bash.bashrc
 
 echo "[TASK 10] Update /etc/hosts file"
 cat >>/etc/hosts<<EOF
-172.16.16.100   kmaster.example.com     kmaster
-172.16.16.101   kworker1.example.com    kworker1
-172.16.16.102   kworker2.example.com    kworker2
+192.168.16.100   kmaster.local     kmaster
+192.168.16.101   kworker1.local    kworker1
+192.168.16.102   kworker2.local    kworker2
 EOF
